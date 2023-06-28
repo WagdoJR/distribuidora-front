@@ -1,0 +1,54 @@
+<form
+  [formGroup]="formGroup"
+  (ngSubmit)="onSubmit()"
+  class="form"
+>
+  <div class="formTipo">
+    <h1>Formulário para {{acao}}</h1>
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="marca">
+      <mat-error *ngIf="handleError('marca', 'required')">
+        O nome do tipo é obrigatório
+      </mat-error>
+      <mat-error *ngIf="handleError('marca', 'minlength')">
+        Mínimo 3 caracteres
+      </mat-error>
+      <mat-error *ngIf="handleError('marca', 'maxlength')">
+        Máximo 50 caracteres
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tipo Bebida</mat-label>
+      <input matInput formControlName="tipoBebida">
+      <mat-error *ngIf="handleError('tipoBebida', 'required')">
+        O nome do tipo é obrigatório
+      </mat-error>
+      <mat-error *ngIf="handleError('tipoBebida', 'minlength')">
+        Mínimo 3 caracteres
+      </mat-error>
+      <mat-error *ngIf="handleError('tipoBebida', 'maxlength')">
+        Máximo 50 caracteres
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>CategoriaBebida</mat-label>
+      <input matInput formControlName="categoriaBebida">
+      <mat-error *ngIf="handleError('categoriaBebida', 'required')">
+        O nome do tipo é obrigatório
+      </mat-error>
+      <mat-error *ngIf="handleError('categoriaBebida', 'minlength')">
+        Mínimo 3 caracteres
+      </mat-error>
+      <mat-error *ngIf="handleError('categoriaBebida', 'maxlength')">
+        Máximo 50 caracteres
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>valor</mat-label>
+      <input matInput type="number" formControlName="valorBebida">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Salvar</button>
+  </div>
+</form>
