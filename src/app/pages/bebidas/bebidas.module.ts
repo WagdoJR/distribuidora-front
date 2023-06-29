@@ -12,15 +12,17 @@ import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { VendaBebidaComponent } from './venda-bebida/venda-bebida.component';
 
 @NgModule({
   declarations: [
     ListBebidaComponent,
     HomeBebidaComponent,
-    FormBebidaComponent
+    FormBebidaComponent,
+    VendaBebidaComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatInputModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    FormsModule
   ]
 })
 export class BebidasModule { }

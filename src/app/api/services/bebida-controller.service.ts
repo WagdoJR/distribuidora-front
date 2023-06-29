@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpContext } from '@angular/common/http';
+import {HttpClient, HttpResponse, HttpContext, HttpParams} from '@angular/common/http';
 import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
@@ -26,6 +26,7 @@ export class BebidaControllerService extends BaseService {
    * Path part for operation obterPorId
    */
   static readonly ObterPorIdPath = '/api/v1/bebida/{id}';
+  static readonly OrcarPath = '/api/v1/bebida/desconto'
 
   /**
    * Obter os dados completos de uma entidiade pelo id informado!
@@ -308,6 +309,36 @@ export class BebidaControllerService extends BaseService {
 ): Observable<any> {
 
     return this.incluir$Response(params,context).pipe(
+      map((r: StrictHttpResponse<any>) => r.body as any)
+    );
+  }
+
+  orcar$Response(
+    quantidade: string,
+    codigo: string,
+    context?: HttpContext
+  ): Observable<StrictHttpResponse<any>> {
+
+    // query param
+    let params = new HttpParams()
+      .set('id', codigo)
+      .set('quantidade', quantidade);
+
+    const urlWithParams = this.rootUrl + BebidaControllerService.OrcarPath;
+
+    return this.http.get<any>(urlWithParams, { params, observe: 'response', context }).pipe(
+      map((r: HttpResponse<any>) => {
+        return r as StrictHttpResponse<any>;
+      })
+    );
+  }
+
+  orcar(quantidade: string,
+          codigo: string,
+          context?: HttpContext
+  ): Observable<any> {
+
+    return this.orcar$Response(quantidade,codigo, context).pipe(
       map((r: StrictHttpResponse<any>) => r.body as any)
     );
   }

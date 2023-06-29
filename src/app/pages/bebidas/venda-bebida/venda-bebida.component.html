@@ -1,0 +1,60 @@
+<mat-card>
+  <h1>Calcular Desconto</h1>
+  <form #nome class="formTipo">
+    <mat-form-field color="primary">
+      <input matInput required [(ngModel)]="bebida.quantidade" placeholder="Quantidade"
+             name="quantidade">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput required placeholder="Código" [(ngModel)]="bebida.codigo"
+             name="id" >
+    </mat-form-field>
+
+  </form>
+  <div class="button">
+    <button mat-raised-button color="primary" class="buttonSave" (click)="enviar()">
+      Enviar
+    </button>
+
+    <button mat-raised-button (click)="limpar()">
+      Limpar
+    </button>
+  </div>
+
+  <mat-card *ngIf="temDadosDeRetorno">
+    <h2 >Informações do desconto </h2>
+
+    <form #nome class="formTipo">
+
+      Numero do Desconto:
+      <mat-form-field>
+        <input matInput required placeholder="Numero do Desconto" [(ngModel)]="bebidaDescontoDTO.numeroDesconto"
+               name="numero"
+               [readonly]="true">
+      </mat-form-field>
+
+      Marca:
+      <mat-form-field color="primary">
+        <input matInput required [(ngModel)]="bebidaDescontoDTO.marca" placeholder="Marca"
+               name="marca"
+               [readonly]="true">
+      </mat-form-field>
+
+      Desconto:
+      <mat-form-field>
+        <input matInput required placeholder="Desconto" [(ngModel)]="bebidaDescontoDTO.valorDesconto"
+               name="desconto"
+               [readonly]="true">
+      </mat-form-field>
+
+      Total:
+      <mat-form-field>
+        <input matInput required placeholder="Total" [(ngModel)]="bebidaDescontoDTO.valorTotal"
+               name="total"
+               [readonly]="true">
+      </mat-form-field>
+
+    </form>
+  </mat-card>
+</mat-card>
